@@ -1,6 +1,7 @@
 # Dianping review endpoints — observed contract
 
-Captured against `www.dianping.com/shop/l7WauBtSg0GxkYvz` (2026-10), logged in.
+Captured against a live 月子中心/门店 shop page (2026-10), logged in, on both the
+`www` and `m` hosts.
 Names and tokens rotate; treat the *shape* as durable and the *names* as
 rediscoverable with `scripts/probe.mjs`.
 
@@ -37,7 +38,7 @@ Response (≈70 KB JSON) — keys worth knowing:
   plain HTTP client, which is why the tooling drives a browser.
 
 `shopUuid` vs numeric id: modern shops use a 24-char opaque id
-(`l7WauBtSg0GxkYvz`); the numeric id (`1173681147`) still appears in
+(`<shopUuid>`, e.g. a 24-char base62 string); the numeric id (`<numericId>`) still appears in
 `data-launch-shop-id` / `dianping://…referid=` attributes and in the legacy
 `m.dianping.com/shop/<numericId>` route.
 

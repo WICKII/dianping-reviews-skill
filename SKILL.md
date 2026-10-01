@@ -26,7 +26,7 @@ Dianping does not expose a useable public review feed. What actually works:
    via `mapi.dianping.com/mapi/review/outsidesiftedreviewlist.bin?...&start=0,14,28,…`.
    Requests are signed (`mtgsig` header) by the page's own JS, so drive a real
    browser rather than replaying HTTP.
-5. **Reviews are free text.** Staff are named inline ("月嫂王丽娜阿姨", "护士长文文"),
+5. **Reviews are free text.** Staff are named inline ("月嫂张一云阿姨", "护士长孙恬"),
    so anything entity-shaped needs mining + human curation, not a schema.
 
 ## Workflow
@@ -76,7 +76,7 @@ after the profile is logged in; `--max-reviews N` to sample.
 
 ```bash
 python3 scripts/reviews.py stats   --reviews data/reviews.json
-python3 scripts/reviews.py search  --reviews data/reviews.json --pattern "刘艳|周艳" --context 40
+python3 scripts/reviews.py search  --reviews data/reviews.json --pattern "退款|加价" --context 40
 python3 scripts/reviews.py entities --reviews data/reviews.json --min-count 3
 python3 scripts/reviews.py chart   --reviews data/reviews.json --roster assets/roster.example.json --out .
 python3 scripts/reviews.py export  --reviews data/reviews.json --format csv --out reviews.csv

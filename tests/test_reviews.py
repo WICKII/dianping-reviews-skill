@@ -18,8 +18,8 @@ import reviews as R  # noqa: E402
 
 FIXTURE = os.path.join(ROOT, "tests", "fixtures", "reviews.sample.json")
 ROSTER = {
-    "roles": {"月嫂/阿姨": ["刘艳", "李爱英", "郭丽丽"], "护士/护理": ["晨燕"]},
-    "aliases": {"晨艳": "晨燕"},
+    "roles": {"月嫂/阿姨": ["张一云", "李文静", "陈可"], "护士/护理": ["孙恬"]},
+    "aliases": {"恬恬": "孙恬"},
 }
 
 
@@ -66,7 +66,7 @@ class TestFilters(unittest.TestCase):
         self.assertEqual([r["author"] for r in got], ["dave"])
 
     def test_grep_filter(self):
-        got = R.apply_filters(self.rows, ns(grep="郭丽丽"))
+        got = R.apply_filters(self.rows, ns(grep="陈可"))
         self.assertEqual(len(got), 1)
 
     def test_since_filter_ignores_undated(self):
@@ -97,7 +97,7 @@ class TestSearch(unittest.TestCase):
         rows, _ = R.load(FIXTURE)
         hits = []
         import re as _re
-        rx = _re.compile("刘艳")
+        rx = _re.compile("张一云")
         for r in rows:
             for m in rx.finditer(r["text"]):
                 hits.append((r["author"], R.polarity(r["rating"]), m.start()))
@@ -108,9 +108,9 @@ class TestSearch(unittest.TestCase):
 class TestEntities(unittest.TestCase):
     def test_mines_name_next_to_role_word(self):
         rows, _ = R.load(FIXTURE)
-        rows[0]["text"] = "我的金牌月嫂王丽娜阿姨太棒了，月嫂王丽娜阿姨很专业。" + rows[0]["text"]
+        rows[0]["text"] = "我的金牌月嫂何桃阿姨太棒了，月嫂何桃阿姨很专业。" + rows[0]["text"]
         mined = dict((n, c) for n, c, _ in R.mine_entities(rows, ["月嫂", "阿姨"]))
-        self.assertEqual(mined.get("王丽娜"), 2)
+        self.assertEqual(mined.get("何桃"), 2)
 
     def test_rejects_role_fragments(self):
         rows, _ = R.load(FIXTURE)
@@ -129,24 +129,24 @@ class TestRosterScoring(unittest.TestCase):
         self.by_name = dict(R.score_roster(rows, ROSTER))
 
     def test_alias_folds_into_canonical(self):
-        self.assertIn("晨燕", self.by_name)
-        self.assertEqual(self.by_name["晨燕"]["reviews"], 1)
+        self.assertIn("孙恬", self.by_name)
+        self.assertEqual(self.by_name["孙恬"]["reviews"], 1)
 
     def test_review_counted_once_for_repeated_mentions(self):
-        s = self.by_name["刘艳"]
+        s = self.by_name["张一云"]
         self.assertEqual(s["reviews"], 2)
         self.assertEqual(s["mentions"], 3)
         self.assertEqual(s["labels"]["好评"], 2)
 
     def test_negation_guard(self):
-        self.assertEqual(self.by_name["李爱英"]["neg_ctx"], 0)
+        self.assertEqual(self.by_name["李文静"]["neg_ctx"], 0)
 
     def test_hostile_context_flagged(self):
-        self.assertEqual(self.by_name["郭丽丽"]["neg_ctx"], 1)
+        self.assertEqual(self.by_name["陈可"]["neg_ctx"], 1)
 
     def test_unnamed_complaint_not_attributed(self):
         for name, s in self.by_name.items():
-            self.assertEqual(s["neg_ctx"], 1 if name == "郭丽丽" else 0, name)
+            self.assertEqual(s["neg_ctx"], 1 if name == "陈可" else 0, name)
 
 
 class TestExport(unittest.TestCase):

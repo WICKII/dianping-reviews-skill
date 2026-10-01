@@ -10,7 +10,7 @@
  * pagination cursor.
  *
  * Usage:
- *   node scripts/probe.mjs --url https://www.dianping.com/shop/l7WauBtSg0GxkYvz
+ *   node scripts/probe.mjs --url https://www.dianping.com/shop/<shopUuid>
  *   node scripts/probe.mjs --url https://m.dianping.com/review-list/index.html?... --scroll 3
  *   node scripts/probe.mjs --url <shop> --all          # don't filter to review-ish hosts
  *

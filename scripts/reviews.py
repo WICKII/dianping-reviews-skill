@@ -15,7 +15,7 @@ Every subcommand accepts the shared filters so you can slice first, analyse seco
 Examples
 --------
   python3 scripts/reviews.py stats --reviews data/reviews.json
-  python3 scripts/reviews.py search --reviews data/reviews.json --pattern "刘艳|周艳"
+  python3 scripts/reviews.py search --reviews data/reviews.json --pattern "张一云|李文静"
   python3 scripts/reviews.py entities --reviews data/reviews.json --role-words 阿姨,护士,店长
   python3 scripts/reviews.py entities --reviews data/reviews.json --roster assets/roster.json --chart
   python3 scripts/reviews.py export --reviews data/reviews.json --format csv --out out.csv
@@ -177,7 +177,7 @@ BAN_TAIL = set("医护士长师嫂姨姐销售客服员工房间")
 def clean_entity(token):
     """Reduce a captured token to a 2-3 char candidate name.
 
-    '护士长文文' -> '长文文' -> '文文' ; '金牌月嫂王丽娜' -> '王丽娜'.
+    '护士长孙恬' -> '孙恬' ; '金牌月嫂张一云' -> '张一云'.
     """
     s = token
     while len(s) > 3 and s[0] in STOP_CHARS:
@@ -206,7 +206,7 @@ def _ok_entity(tok):
 
 
 def mine_entities(rows, role_words=ROLE_WORDS, min_count=2):
-    """Frequent 2-3 char tokens sitting next to a role word, e.g. '月嫂王丽娜阿姨'.
+    """Frequent 2-3 char tokens sitting next to a role word, e.g. '月嫂张一云阿姨'.
 
     Both the "<role><name>" and "<name><role>" patterns can cover the same text
     span, so mentions are collected as unique (start, end) offsets per token —

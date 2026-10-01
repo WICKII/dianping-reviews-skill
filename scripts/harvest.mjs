@@ -20,8 +20,8 @@
  *   5. extract structured records and write JSON + CSV
  *
  * Usage:
- *   node scripts/harvest.mjs --shop l7WauBtSg0GxkYvz
- *   node scripts/harvest.mjs --shop https://www.dianping.com/shop/1173681147 --tab 差评
+ *   node scripts/harvest.mjs --shop <shopUuid>
+ *   node scripts/harvest.mjs --shop https://www.dianping.com/shop/<numericId> --tab 差评
  *
  * Reads: nothing. Writes: <out>/reviews.json, <out>/reviews.csv, <out>/harvest.log.json
  */

@@ -1,0 +1,19 @@
+# harvested review data and probe output — never commit user-generated content
+data/
+data-*/
+probe-out/
+*-out/
+reviews.json
+reviews.csv
+*.har
+
+# browser session state (contains login cookies)
+profile/
+.dianping-harvest/
+login-page.png
+
+# deps and build noise
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store

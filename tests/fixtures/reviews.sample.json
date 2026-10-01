@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "shop": "unit-test-fixture",
+    "tab": "全部",
+    "declaredTotal": 5,
+    "records": 5
+  },
+  "reviews": [
+    {
+      "index": 0,
+      "author": "alice",
+      "date": "发布于9月24日",
+      "rating": "超预期",
+      "scores": { "环境": 5.0, "护理": 5.0, "月子餐": 5.0 },
+      "spend": null,
+      "text": "强烈推荐刘艳阿姨，专业能力强，照顾宝宝经验十分丰富。刘艳阿姨还手把手教我们喂奶。",
+      "imageCount": 0
+    },
+    {
+      "index": 1,
+      "author": "bob",
+      "date": "发布于9月22日",
+      "rating": "超预期",
+      "scores": { "护理": 5.0 },
+      "spend": 53800,
+      "text": "非常感谢月子会所的刘艳阿姨，专业又细心。护士晨艳也很靠谱。",
+      "imageCount": 2
+    },
+    {
+      "index": 2,
+      "author": "carol",
+      "date": "发布于5月16日",
+      "rating": "不错",
+      "scores": { "护理": 2.5 },
+      "spend": null,
+      "text": "护理师高艳玲很好。也特别说一下我的第一个护理师郭丽丽：极其不专业且没有爱心不道德，千万不要把宝宝交到这种人手里遭罪！",
+      "imageCount": 0
+    },
+    {
+      "index": 3,
+      "author": "dave",
+      "date": "发布于3月9日",
+      "rating": "一般",
+      "scores": { "护理": 2.5 },
+      "spend": null,
+      "text": "月嫂很差，储存的冻奶解冻了又复冻，半夜我哄孩子她睡大觉。",
+      "imageCount": 0
+    },
+    {
+      "index": 4,
+      "author": "erin",
+      "date": "发布于2024年1月25日",
+      "rating": "超预期",
+      "scores": { "环境": 5.0 },
+      "spend": null,
+      "text": "李爱英阿姨专业又贴心，点名找李爱英阿姨应该不会失望，五星推荐！",
+      "imageCount": 1
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "_comment": "Format reference only — these are invented names. Build your own with `reviews.py entities` (mining), then curate. Roles are free-form: they are only used for grouping/colouring in reports and charts.",
+  "shop": "example",
+  "roles": {
+    "月嫂/阿姨": ["张一云", "李文静", "陈可", "赵一鸣"],
+    "护士/护理": ["孙恬", "周洁", "吴桐"],
+    "产康": ["郑小美", "何桃"],
+    "销售/客服": ["冯慧", "许茜"]
+  },
+  "aliases": {
+    "小云": "张一云",
+    "文静": "李文静",
+    "恬恬": "孙恬"
+  }
+}
